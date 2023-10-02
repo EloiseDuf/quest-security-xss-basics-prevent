@@ -46,10 +46,20 @@
 
         input.addEventListener("input", updateValue);
 
-        function updateValue(e) {
-            log.innerHTML = e.target.value;
+        function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
         }
 
+        function updateValue(e) {
+            //use function witch create a div to tranform in text 
+            log.innerHTML = escapeHTML(e.target.value);
+            //below :transform elements in json but not full secured.
+            // log.innerHTML = JSON.stringify(e.target.value);   
+        }
+
+ 
     </script>
 
 </body>
